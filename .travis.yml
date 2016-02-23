@@ -1,21 +1,24 @@
 notifications:
   email: false
 language: ruby
+sudo: required
 rvm:
-  - ruby-2.0
-  - ruby-2.1.5
-  - ruby-2.2.2
-  - jruby-9.0.0.0.pre2
+  - ruby-2.0.0-p648
+  - ruby-2.1.8
+  - ruby-2.2.4
+  - ruby-2.3.0-preview2
+  - jruby-head
 env:
   - JRUBY_OPTS="-Xcli.debug=true --debug"
 addons:
   code_climate:
-    repo_token: bbd2a5e077e4b62bd8ba21a74a2ba901defc43506812f6192efc6b2a25c20d49
+    repo_token: 60d9731d654527cb53aabc7db15bcde87d701ddb6b1cba8fc0da6aba16d00bb1
 before_install:
   - sudo add-apt-repository "deb http://cz.archive.ubuntu.com/ubuntu vivid main universe"
   - sudo apt-get update -q
   - sudo rm -rf /etc/dpkg/dpkg.cfg.d/multiarch
   - sudo apt-get install gnuplot5
+  - gem update bundler
   - bundle install
 install:
   - bundle exec rake install

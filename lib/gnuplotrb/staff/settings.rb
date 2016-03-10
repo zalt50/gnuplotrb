@@ -7,6 +7,8 @@ module GnuplotRB
     MIN_GNUPLOT_VERSION = 5.0
 
     class << self
+      DEFAULT_MAX_FIT_DELAY = 5
+      DEFAULT_GNUPLOT_PATH = 'gnuplot'
       ##
       # For heavy calculations max_fit_delay may be increased.
       attr_writer :max_fit_delay
@@ -18,7 +20,7 @@ module GnuplotRB
       # this behaviour is considered as errorneus.
       # @return [Integer] seconds to wait for output
       def max_fit_delay
-        @max_fit_delay ||= 5
+        @max_fit_delay ||= DEFAULT_MAX_FIT_DELAY
       end
 
       ##
@@ -26,7 +28,7 @@ module GnuplotRB
       # Default value: 'gnuplot'.
       # @return [String] path to gnuplot executable
       def gnuplot_path
-        self.gnuplot_path = 'gnuplot' unless defined?(@gnuplot_path)
+        self.gnuplot_path = DEFAULT_GNUPLOT_PATH unless defined?(@gnuplot_path)
         @gnuplot_path
       end
 
@@ -72,8 +74,15 @@ module GnuplotRB
                      .read
                      .match(/gnuplot ([^ ]+)/)[1]
                      .to_f
-        message = "Your Gnuplot version is #{@version}, please update it to at least 5.0"
-        fail(ArgumentError, message) if @version < MIN_GNUPLOT_VERSION
+        raise(
+          ArgumentError,
+          "Your Gnuplot version is #{@version}, please update it to at least 5.0"
+        ) if @version < MIN_GNUPLOT_VERSION
+      rescue Errno::ENOENT
+        raise(
+          ArgumentError,
+          "Can't find Gnuplot executable. Please make sure it's installed and added to PATH."
+        )
       end
     end
   end

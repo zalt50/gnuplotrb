@@ -49,9 +49,9 @@ module GnuplotRB
       # had to relace **options arg with this because in some cases
       # Daru::DataFrame was mentioned as hash and added to options
       # instead of plots
-      @options = Hamster.hash
+      @options = Hamster::Hash.empty
       if datasets[-1].is_a?(Hamster::Hash) || datasets[-1].is_a?(Hash)
-        @options = Hamster.hash(datasets[-1])
+        @options = Hamster::Hash[datasets[-1]]
         datasets = datasets[0..-2]
       end
       @datasets = parse_datasets_array(datasets)

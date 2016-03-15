@@ -104,7 +104,7 @@ describe Dataset do
 
   context 'options handling' do
     before do
-      @options = Hamster.hash(title: 'GnuplotRB::Dataset', with: 'lines')
+      @options = Hamster::Hash[title: 'GnuplotRB::Dataset', with: 'lines']
       @dataset = Dataset.new('sin(x)', @options)
     end
 
@@ -124,7 +124,7 @@ describe Dataset do
     end
 
     it 'should allow to safely set several options at once' do
-      new_options = Hamster.hash(title: 'Some new title', with: 'lines', lt: 3)
+      new_options = Hamster::Hash[title: 'Some new title', with: 'lines', lt: 3]
       new_dataset = @dataset.options(new_options)
       @options.each { |key, value| expect(@dataset.send(key)).to eql(value) }
       new_options.each { |key, value| expect(new_dataset.send(key)).to eql(value) }
@@ -136,7 +136,7 @@ describe Dataset do
       x = (0..10).to_a
       y = x.map { |xx| Math.exp(-xx) }
       @data = [x, y]
-      @options = Hamster.hash(title: 'GnuplotRB::Dataset', with: 'lines')
+      @options = Hamster::Hash[title: 'GnuplotRB::Dataset', with: 'lines']
       @sinx = Dataset.new('sin(x)', @options)
       @dataset = Dataset.new([x, y])
       @temp_file_dataset = Dataset.new([x, y], file: true)
@@ -144,7 +144,7 @@ describe Dataset do
 
     it 'should update options' do
       # works just as Dataset#options(...)
-      new_options = Hamster.hash(title: 'Some new title', with: 'lines', lt: 3)
+      new_options = Hamster::Hash[title: 'Some new title', with: 'lines', lt: 3]
       new_dataset = @sinx.update(new_options)
       @options.each { |key, value| expect(@sinx.send(key)).to eql(value) }
       new_options.each { |key, value| expect(new_dataset.send(key)).to eql(value) }

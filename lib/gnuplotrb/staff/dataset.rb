@@ -234,7 +234,7 @@ module GnuplotRB
     # Initialize Dataset from given String
     def init_string(data, options)
       @type, @data = File.exist?(data) ? [:datafile, "'#{data}'"] : [:math_function, data.clone]
-      @options = Hamster.hash(options)
+      @options = Hamster::Hash[options]
     end
 
     ##
@@ -242,7 +242,7 @@ module GnuplotRB
     def init_dblock(data, options)
       @type = :datablock
       @data = data.clone
-      @options = Hamster.hash(options)
+      @options = Hamster::Hash[options]
     end
 
     ##
@@ -288,7 +288,7 @@ module GnuplotRB
     def init_default(data, file: false, **options)
       @type = :datablock
       @data = Datablock.new(data, file)
-      @options = Hamster.hash(options)
+      @options = Hamster::Hash[options]
     end
   end
 end

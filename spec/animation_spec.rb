@@ -33,7 +33,7 @@ describe Animation do
 
   context 'option handling' do
     before do
-      @options = Hamster.hash(title: 'GnuplotRB::Animation', yrange: 0..3)
+      @options = Hamster::Hash[title: 'GnuplotRB::Animation', yrange: 0..3]
       @anim = Animation.new(**@options)
     end
 

@@ -33,7 +33,7 @@ describe Multiplot do
 
   context 'option handling' do
     before do
-      @options = Hamster.hash(title: 'GnuplotRB::Multiplot', yrange: 0..3)
+      @options = Hamster::Hash[title: 'GnuplotRB::Multiplot', yrange: 0..3]
       @mp = Multiplot.new(**@options)
     end
 

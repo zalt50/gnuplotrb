@@ -26,7 +26,7 @@ module GnuplotRB
     # @param options [Hash] see options in top class docs
     def initialize(*plots, **options)
       @plots = plots[0].is_a?(Hamster::Vector) ? plots[0] : Hamster::Vector.new(plots)
-      @options = Hamster.hash(options)
+      @options = Hamster::Hash[options]
       OptionHandling.validate_terminal_options(@options)
       yield(self) if block_given?
     end

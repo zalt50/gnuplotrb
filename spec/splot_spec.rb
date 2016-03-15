@@ -27,7 +27,7 @@ describe Splot do
 
   context 'options handling' do
     before do
-      @options = Hamster.hash(title: 'GnuplotRB::Plot', yrange: 0..3)
+      @options = Hamster::Hash[title: 'GnuplotRB::Plot', yrange: 0..3]
       @plot = Splot.new(**@options)
     end
 

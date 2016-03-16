@@ -9,7 +9,9 @@ This software has been developed as a product in Google Summer of Code 2015 (GSo
 {<img src="https://gemnasium.com/dilcom/gnuplotrb.svg" alt="Dependency Status" />}[https://gemnasium.com/dilcom/gnuplotrb]
 
 {<img src="https://travis-ci.org/SciRuby/gnuplotrb.svg" alt="Build Status" />}[https://travis-ci.org/SciRuby/gnuplotrb]
+
 {<img src="https://codeclimate.com/github/sciruby/gnuplotrb/badges/gpa.svg" alt="Code quality" />}[https://codeclimate.com/github/sciruby/gnuplotrb]
+
 {<img src="https://codeclimate.com/github/sciruby/gnuplotrb/badges/coverage.svg" alt="Test coverage" />}[https://codeclimate.com/github/sciruby/gnuplotrb]
 
 == Table of contents

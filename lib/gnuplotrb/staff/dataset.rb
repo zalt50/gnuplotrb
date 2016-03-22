@@ -249,7 +249,9 @@ module GnuplotRB
     # Create new value for 'using' option based on column count
     def get_daru_columns(data, cnt)
       new_opt = (2..cnt).to_a.join(':')
-      if data.index.key(0).is_a?(DateTime) || data.index.key(0).is_a?(Numeric)
+      # check if DateTimeIndex. If not, assume it is Daru::Index and check for 
+      # numeric value in the index.
+      if data.index.instance_of?(Daru::DateTimeIndex) || data.index.first[0].is_a?(Numeric)
         "1:#{new_opt}"
       else
         "#{new_opt}:xtic(1)"

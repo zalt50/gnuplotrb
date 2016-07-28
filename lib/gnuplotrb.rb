@@ -15,10 +15,12 @@ rescue LoadError
 end
 
 require_if_available('daru')
+require_if_available('numo/narray')
 
 require 'gnuplotrb/external_classes/string'
 require 'gnuplotrb/external_classes/array'
 require 'gnuplotrb/external_classes/daru'
+require 'gnuplotrb/external_classes/numo/narray'
 
 require 'gnuplotrb/version'
 require 'gnuplotrb/staff/settings'
